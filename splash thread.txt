@@ -1,0 +1,28 @@
+//splash screen thread c#
+public frmMain()
+{
+    Thread t = new Thread(new ThreadStart(Splash));
+    t.Start();
+    InitializeComponent();
+    //Loading data
+    string str = string.Empty;
+    for (int i = 0; i < 100000; i++)
+    {
+        str += i.ToString();//Init data, only for demo
+    }
+    //Complete
+    t.Abort();
+}
+
+
+void Splash()
+{
+    //Open a splash screen form
+    SplashScreen.SplashForm frm = new SplashScreen.SplashForm();
+    frm.Font = new Font("Time New Romans", 7);
+    frm.AppName = "Demo";
+    frm.Icon = Properties.Resources.app;//Load icon from resource
+    frm.ShowIcon = true;
+    frm.ShowInTaskbar = true;
+    Application.Run(frm);
+}
